@@ -1,0 +1,59 @@
+{% include "header.html" %}
+
+<!-- Page Header-->
+<header
+  class="masthead"
+  style="background-image: url('../static/assets/img/home.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>LabChem DB</h1>
+          <span class="subheading">Catalog of chemical reagents in your lab</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Main Content-->
+      <!-- New reagent -->
+      <div class="d-flex justify-content-end mb-4">
+      <!-- Adding new raegent -->
+        <a
+          class="btn btn-primary float-right"
+          href="{{ url_for('add_new_chem') }}"
+          >Add new reagent</a
+        >
+      </div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Lab id</th>
+      <th scope="col">Cabinet number</th>
+      <th scope="col">English name</th>
+      <th scope="col">Polish name</th>
+      <th scope="col">CAS number</th>
+      <th scope="col">Producer</th>
+      <th scope="col">Packaging capacity</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for reagent in all_reagents %}
+  <tr>
+      <td>{{ reagent.lab_id }}</td>
+      <td>{{ reagent.cabinet_number }}</td>
+      <td>{{ reagent.english_name }}</td>
+      <td>{{ reagent.polish_name }}</td>
+      <td>{{ reagent.cas_number }}</td>
+      <td>{{ reagent.producer }}</td>
+      <td>{{ reagent.packaging_capacity }}</td>
+      <td><a href="{{ url_for('delete_chem', lab_id=reagent.lab_id) }}">✘</a></td>
+      <td><a href="{{ url_for('edit_chem', lab_id=reagent.lab_id) }}">✏️</a></td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% include "footer.html" %}
