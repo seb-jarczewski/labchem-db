@@ -33,4 +33,5 @@ The "Lab id" value has to be unique!
 
 ## License
 
+Based on the Blog project from Angela Yu Python course at Udemy.
 This project is open source and available under the MIT License.
